@@ -34,3 +34,5 @@ gem 'factory_bot_rails', '~> 6.4', groups: %i[development test]
 gem "faker", "~> 3.3", :groups => [:development, :test]
 
 gem "shoulda-matchers", "~> 6.2", :group => :test
+
+gem "rack-cors", "~> 2.0"
