@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Transaction < ApplicationRecord
-  before_save :set_transaction_id
+  before_save :set_transaction_id, unless: :transaction_exists?
 
   belongs_to :user
 
@@ -29,5 +29,9 @@ class Transaction < ApplicationRecord
 
   def set_transaction_id
     self.transaction_id = Digest::UUID.uuid_v4
+  end
+
+  def transaction_exists?
+    self.class.exists?(transaction_id:)
   end
 end
