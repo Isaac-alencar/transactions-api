@@ -37,8 +37,10 @@ class TransactionsController < ActionController::API
   private
 
   def transaction_params
-    params.require(:transaction).permit(:card_holder, :card_number, :card_security_code,
-                                        :card_expiration_date, :amount, :user_id)
+    params
+      .require(:data)
+      .require(:transaction).permit(:card_holder, :card_number, :card_security_code,
+                                    :card_expiration_date, :amount, :user_id)
   end
 
   def update_transaction_params

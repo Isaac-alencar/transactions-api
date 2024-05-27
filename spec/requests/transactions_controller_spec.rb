@@ -55,7 +55,7 @@ RSpec.describe TransactionsController, type: 'request' do
       let!(:user) { create(:user) }
       let(:transaction_params) { attributes_for(:transaction, user_id: user.id) }
       it 'creates a new transaction' do
-        post transactions_path, params: { transaction: transaction_params }
+        post transactions_path, params: { data: { transaction: transaction_params } }
 
         expect(response).to have_http_status(:created)
       end
@@ -69,7 +69,7 @@ RSpec.describe TransactionsController, type: 'request' do
       let(:invalid_amount) { attributes_for(:transaction, :invalid_amount, user_id: user.id) }
 
       it 'does not creates a transaction with no amount' do
-        post transactions_path, params: { transaction: missing_param }
+        post transactions_path, params: { data: { transaction: missing_param } }
 
         error_message = { "amount": ["can't be blank", 'is not a number'] }.to_json
 
@@ -78,7 +78,7 @@ RSpec.describe TransactionsController, type: 'request' do
       end
 
       it 'does not creates a transaction with expired card' do
-        post transactions_path, params: { transaction: invalid_expiration_date }
+        post transactions_path, params: { data: { transaction: invalid_expiration_date } }
 
         error_message = { "card_expiration_date": ['The card is already expired'] }.to_json
 
@@ -87,7 +87,7 @@ RSpec.describe TransactionsController, type: 'request' do
       end
 
       it 'does not creates a transaction with invalid amount' do
-        post transactions_path, params: { transaction: invalid_amount }
+        post transactions_path, params: { data: { transaction: invalid_amount } }
 
         error_message = { "amount": ['must be greater than 0'] }.to_json
 
