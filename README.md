@@ -1,24 +1,50 @@
-# README
+# Transactions API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Get started
 
-Things you may want to cover:
+# How to run it locally
 
-* Ruby version
+1. clone the repository
 
-* System dependencies
+```sh
+    git clone git@github.com:Isaac-alencar/transactions-api.git
+```
 
-* Configuration
+2. move to the repository folder
 
-* Database creation
+```sh
+    cd transactions-api/
+```
 
-* Database initialization
+3. install the dependencies
 
-* How to run the test suite
+```sh
+  bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+4. setup the database
 
-* Deployment instructions
+```sh
+  # this will create the database and add some data
+  rails db:setup
+```
 
-* ...
+5. run the server
+
+```sh
+  rails server # or rails s, for short
+```
+
+# Running specs
+
+```sh
+  bundle exec rspec
+```
+
+# Documentation
+
+You can check the api documentation by running:
+
+```sh
+    open doc/api/index.html
+```
