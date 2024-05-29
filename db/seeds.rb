@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+user = FactoryBot.create(:user)
+
+puts 'SEEDS - Creating transactions'
+FactoryBot.create_list(:transaction, 18, user:)
+FactoryBot.create_list(:transaction, 5, user:, status: :approved)
+FactoryBot.create_list(:transaction, 3, user:, status: :denied)
