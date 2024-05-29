@@ -138,21 +138,21 @@ RSpec.describe TransactionsController, type: 'request' do
       it "can't be changed to any status" do
         patch transaction_path(transaction.transaction_id), params: to_approved
 
-        expect(response).to have_http_status :ok
+        expect(response).to have_http_status :unprocessable_entity
         expect(response.body).to eq(expected_response)
       end
 
       it "can't be changed to any status" do
         patch transaction_path(transaction.transaction_id), params: to_denied
 
-        expect(response).to have_http_status :ok
+        expect(response).to have_http_status :unprocessable_entity
         expect(response.body).to eq(expected_response)
       end
 
       it "can't be changed to any status" do
         patch transaction_path(transaction.transaction_id), params: to_pending
 
-        expect(response).to have_http_status :ok
+        expect(response).to have_http_status :unprocessable_entity
         expect(response.body).to eq(expected_response)
       end
     end

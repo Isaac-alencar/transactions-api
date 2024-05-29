@@ -25,7 +25,8 @@ class TransactionsController < ActionController::API
 
   def update
     unless @transaction.pending?
-      render json: { message: "Can't change a denied or approved transaction!" }
+      render json: { message: "Can't change a denied or approved transaction!" },
+             status: :unprocessable_entity
       return
     end
 
