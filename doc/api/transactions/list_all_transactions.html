@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Transactions API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Transactions API</h1>
+
+        <p class="explanation">Transactions resource</p>
+
+      <div class="article">
+        <h2>list all transactions</h2>
+        <h3>GET /transactions</h3>
+
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">GET /transactions</pre>
+
+
+
+
+            <h3>Response</h3>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">[
+  {
+    &quot;id&quot;: 1,
+    &quot;transaction_id&quot;: &quot;da14e084-a779-4cbd-b60e-be9d7eaecdfb&quot;,
+    &quot;card_holder&quot;: &quot;Karlene Schulist&quot;,
+    &quot;card_number&quot;: &quot;1228-1221-1221-1431&quot;,
+    &quot;card_expiration_date&quot;: &quot;09/2038&quot;,
+    &quot;card_security_code&quot;: 860,
+    &quot;amount&quot;: &quot;26.35&quot;,
+    &quot;status&quot;: &quot;pending&quot;,
+    &quot;created_at&quot;: &quot;2024-05-29T00:41:35.051Z&quot;,
+    &quot;updated_at&quot;: &quot;2024-05-29T00:41:35.051Z&quot;,
+    &quot;user_id&quot;: 1
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;transaction_id&quot;: &quot;0ef203ce-b903-45a5-8d88-b418fcf67b6a&quot;,
+    &quot;card_holder&quot;: &quot;Gregorio Kuphal&quot;,
+    &quot;card_number&quot;: &quot;1212-1221-1121-1234&quot;,
+    &quot;card_expiration_date&quot;: &quot;09/2034&quot;,
+    &quot;card_security_code&quot;: 500,
+    &quot;amount&quot;: &quot;75.72&quot;,
+    &quot;status&quot;: &quot;pending&quot;,
+    &quot;created_at&quot;: &quot;2024-05-29T00:41:35.054Z&quot;,
+    &quot;updated_at&quot;: &quot;2024-05-29T00:41:35.054Z&quot;,
+    &quot;user_id&quot;: 2
+  },
+  {
+    &quot;id&quot;: 3,
+    &quot;transaction_id&quot;: &quot;f36416e2-d22d-4141-a916-44745636ae40&quot;,
+    &quot;card_holder&quot;: &quot;Annika Boehm&quot;,
+    &quot;card_number&quot;: &quot;1234-2121-1221-1211&quot;,
+    &quot;card_expiration_date&quot;: &quot;10/2037&quot;,
+    &quot;card_security_code&quot;: 892,
+    &quot;amount&quot;: &quot;31.69&quot;,
+    &quot;status&quot;: &quot;pending&quot;,
+    &quot;created_at&quot;: &quot;2024-05-29T00:41:35.057Z&quot;,
+    &quot;updated_at&quot;: &quot;2024-05-29T00:41:35.057Z&quot;,
+    &quot;user_id&quot;: 3
+  },
+  {
+    &quot;id&quot;: 4,
+    &quot;transaction_id&quot;: &quot;b385cb5c-ae12-430c-b662-223d9b72c622&quot;,
+    &quot;card_holder&quot;: &quot;Lane Koepp&quot;,
+    &quot;card_number&quot;: &quot;1228-1221-1221-1431&quot;,
+    &quot;card_expiration_date&quot;: &quot;06/2028&quot;,
+    &quot;card_security_code&quot;: 710,
+    &quot;amount&quot;: &quot;68.1&quot;,
+    &quot;status&quot;: &quot;pending&quot;,
+    &quot;created_at&quot;: &quot;2024-05-29T00:41:35.060Z&quot;,
+    &quot;updated_at&quot;: &quot;2024-05-29T00:41:35.060Z&quot;,
+    &quot;user_id&quot;: 4
+  }
+]</pre>
+      </div>
+    </div>
+  </body>
+</html>

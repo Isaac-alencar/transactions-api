@@ -20,6 +20,7 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
+  gem 'rspec_api_documentation'
 end
 
 group :development do
@@ -31,8 +32,8 @@ gem 'rspec-rails', '~> 6.1', groups: %i[development test]
 
 gem 'factory_bot_rails', '~> 6.4', groups: %i[development test]
 
-gem "faker", "~> 3.3", :groups => [:development, :test]
+gem 'faker', '~> 3.3', groups: %i[development test]
 
-gem "shoulda-matchers", "~> 6.2", :group => :test
+gem 'shoulda-matchers', '~> 6.2', group: :test
 
-gem "rack-cors", "~> 2.0"
+gem 'rack-cors', '~> 2.0'

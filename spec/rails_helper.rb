@@ -8,7 +8,6 @@ require_relative '../config/environment'
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -74,4 +73,43 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+#### RspecApiDocumentation ####
+
+# Due to this isse here https://github.com/zipmark/rspec_api_documentation/issues/456
+# I need to do this workaround
+module RspecApiDocumentation
+  class RackTestClient < ClientBase
+    def response_body
+      last_response.body.encode('utf-8')
+    end
+  end
+end
+
+# Due to this issue https://github.com/zipmark/rspec_api_documentation/issues/514
+# I need to do this workaround
+class File
+  class << self
+    alias exists? exist?
+  end
+end
+
+RspecApiDocumentation.configure do |config|
+  # Output folder
+  config.docs_dir = Rails.root.join('doc', 'api')
+  # Possible values are :json, :html, :combined_text, :combined_json,
+  #   :json_iodocs, :textile, :markdown, :append_json
+  config.format = [:html]
+
+  config.keep_source_order = true
+
+  config.request_body_formatter = :json
+
+  # to avoid conflicts with statuses params
+  config.disable_dsl_status!
+
+  config.response_headers_to_include = []
+
+  config.api_name = 'Transaction api'
 end
